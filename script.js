@@ -10,13 +10,46 @@ $$('[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{clickSound();
 $$('.back-btn').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));
 $('.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen||'menu')}));
 function enter(){clickSound();showScreen('menu')}
-const swipeTrack=$('#swipeTrack');let dragging=false,completed=false;
-function moveSwipe(e){if(!dragging||completed)return;const rect=swipeTrack.getBoundingClientRect();const x=Math.max(0,Math.min(rect.width,e.clientX-rect.left));const p=x/rect.width;swipeTrack.style.setProperty('--swipe-x',(p*100)+'%');swipeTrack.setAttribute('aria-valuenow',String(Math.round(p*100)));if(p>=.985){completed=true;dragging=false;try{swipeTrack.releasePointerCapture(e.pointerId)}catch(_){}enter()}}
-swipeTrack.addEventListener('pointerdown',e=>{if(completed)return;const rect=swipeTrack.getBoundingClientRect();const x=e.clientX-rect.left;if(x>rect.width*.22)return;dragging=true;swipeTrack.style.setProperty('--swipe-x',(Math.max(0,x/rect.width*100))+'%');swipeTrack.setAttribute('aria-valuenow',String(Math.round(x/rect.width*100)));try{swipeTrack.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault()});
-swipeTrack.addEventListener('pointermove',moveSwipe);function endSwipe(){if(!dragging)return;dragging=false;swipeTrack.style.setProperty('--swipe-x','0%');swipeTrack.setAttribute('aria-valuenow','0')}
-swipeTrack.addEventListener('pointerup',endSwipe);swipeTrack.addEventListener('pointercancel',endSwipe);
-swipeTrack.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='End'){e.preventDefault();completed=true;enter()}});
-
+const swipeTrack=$('#swipeTrack');let dragging=false,completed=false,activePointer=null;
+function updateSwipe(e){
+ if(!dragging||completed||e.pointerId!==activePointer)return;
+ const rect=swipeTrack.getBoundingClientRect();
+ const p=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));
+ swipeTrack.style.setProperty('--swipe-x',(p*100)+'%');
+ swipeTrack.setAttribute('aria-valuenow',String(Math.round(p*100)));
+ if(p>=.97){
+  completed=true;dragging=false;activePointer=null;
+  try{swipeTrack.releasePointerCapture(e.pointerId)}catch(_){}
+  enter();
+ }
+}
+function startSwipe(e){
+ if(completed||!e.isPrimary)return;
+ dragging=true;activePointer=e.pointerId;
+ try{swipeTrack.setPointerCapture(e.pointerId)}catch(_){}
+ updateSwipe(e);
+ e.preventDefault();
+}
+function finishSwipe(e){
+ if(!dragging||e.pointerId!==activePointer)return;
+ updateSwipe(e);
+ if(completed)return;
+ dragging=false;activePointer=null;
+ swipeTrack.style.setProperty('--swipe-x','0%');
+ swipeTrack.setAttribute('aria-valuenow','0');
+}
+function cancelSwipe(e){
+ if(!dragging||e.pointerId!==activePointer)return;
+ dragging=false;activePointer=null;
+ swipeTrack.style.setProperty('--swipe-x','0%');
+ swipeTrack.setAttribute('aria-valuenow','0');
+}
+swipeTrack.addEventListener('pointerdown',startSwipe);
+swipeTrack.addEventListener('pointermove',updateSwipe);
+swipeTrack.addEventListener('pointerup',finishSwipe);
+swipeTrack.addEventListener('pointercancel',cancelSwipe);
+swipeTrack.addEventListener('lostpointercapture',cancelSwipe);
+swipeTrack.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='End'){e.preventDefault();completed=true;swipeTrack.style.setProperty('--swipe-x','100%');swipeTrack.setAttribute('aria-valuenow','100');enter()}});
 $$('.gallery-item').forEach(item=>item.addEventListener('click',()=>{$('#imageViewer').hidden=false;$('#imageViewer img').src=item.dataset.preview}));
 $('#closeViewer').addEventListener('click',()=>$('#imageViewer').hidden=true);$('#imageViewer').addEventListener('click',e=>{if(e.target.id==='imageViewer')e.currentTarget.hidden=true});
 $('#musicToggle').addEventListener('click',()=>$('#musicTab').classList.toggle('open'));
