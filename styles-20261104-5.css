@@ -211,3 +211,52 @@ body{
 @media(max-width:720px){
  .swipe-arrow{width:92px!important;height:48px!important;font-size:42px!important}
 }
+
+
+/* User-approved swipe indicator: fixed transparent arrow, with moving light only. */
+.swipe-control{
+  height:88px!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+  cursor:ew-resize!important;
+}
+.swipe-control:before,.swipe-control:after{display:none!important;content:none!important}
+.swipe-rail,.swipe-progress{display:none!important}
+.swipe-arrow{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:100%!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  transform:translate(-50%,-50%)!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:rgba(231,190,105,.58)!important;
+  font-size:clamp(76px,12vw,132px)!important;
+  font-weight:300!important;
+  line-height:1!important;
+  text-shadow:0 0 2px rgba(246,220,165,.22)!important;
+  box-shadow:none!important;
+  pointer-events:none!important;
+}
+.swipe-arrow:before{display:none!important;content:none!important}
+.swipe-glow{
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,transparent 0%,transparent 38%,rgba(255,239,194,.05) 43%,rgba(255,226,159,.95) 50%,rgba(255,239,194,.05) 57%,transparent 62%,transparent 100%)!important;
+  filter:blur(3px) drop-shadow(0 0 9px rgba(244,202,120,.9))!important;
+  transform:translateX(-100%)!important;
+  animation:swipeArrowShine 2.8s ease-in-out infinite!important;
+  pointer-events:none!important;
+}
+@keyframes swipeArrowShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@media(max-width:720px){.swipe-control{height:76px!important}.swipe-arrow{font-size:clamp(68px,18vw,100px)!important}}
