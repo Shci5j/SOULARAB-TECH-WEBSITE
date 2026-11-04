@@ -407,3 +407,39 @@ footer {
     max-height: 130px;
   }
 }
+/* FINAL HERO LAYOUT FIX */
+.hero {
+  display: block !important;
+  width: 100%;
+}
+
+.hero-frame {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.hero-frame > * {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.logo-container {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+.logo-container img {
+  width: min(480px, 90%) !important;
+  max-height: 180px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
