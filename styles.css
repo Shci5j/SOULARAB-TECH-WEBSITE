@@ -350,8 +350,7 @@ footer {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(214,173,98,.18));
-} 
-/* Fix horizontal logo and hero layout */
+} /* Fix horizontal logo and hero layout */
 
 .hero-frame {
   display: flex;
