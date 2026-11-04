@@ -439,3 +439,140 @@ body{
   .welcome .swipe-instruction{font-size:12px!important;padding-inline:19%!important}
   .welcome .hint{font-size:12px!important;margin-top:5px!important}
 }
+
+
+/* Final welcome screen layout: fixed viewport, compact vertical rhythm, edge-to-edge arrow. */
+html:has(#welcome.active),
+body:has(#welcome.active){
+  height:100%;
+  min-height:100%;
+  overflow:hidden!important;
+}
+body:has(#welcome.active) main{height:100svh;min-height:0;overflow:hidden}
+#welcome.welcome.active{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  width:100%;
+  height:100svh!important;
+  min-height:100svh!important;
+  max-height:100svh!important;
+  overflow:hidden!important;
+  padding:82px 0 12px!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
+#welcome .welcome-inner{
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:clamp(3px,1.1vh,11px)!important;
+  margin:0!important;
+  padding:0!important;
+}
+#welcome .logo-stage{
+  flex:0 1 auto!important;
+  width:min(330px,65vw)!important;
+  height:clamp(112px,20vh,176px)!important;
+  min-height:0!important;
+  margin:0 auto!important;
+}
+#welcome .eyebrow{
+  flex:0 0 auto!important;
+  margin:0!important;
+  line-height:1.4!important;
+}
+#welcome h1{
+  flex:0 0 auto!important;
+  width:min(760px,96vw)!important;
+  margin:0 auto!important;
+  padding:clamp(8px,1.4vh,14px) 22px!important;
+  line-height:1.35!important;
+  font-size:clamp(23px,4.5vw,42px)!important;
+}
+#welcome .welcome-copy{
+  flex:0 0 auto!important;
+  width:100%!important;
+  max-width:760px!important;
+  margin:0 auto!important;
+  padding:0 16px!important;
+  line-height:1.55!important;
+  font-size:clamp(13px,2.2vw,18px)!important;
+}
+#welcome .swipe-control{
+  position:relative!important;
+  flex:0 0 clamp(78px,13vh,118px)!important;
+  width:100vw!important;
+  max-width:none!important;
+  height:clamp(78px,13vh,118px)!important;
+  margin:auto calc(50% - 50vw) 0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+#welcome .swipe-arrow-image{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:fill!important;
+  object-position:center!important;
+}
+#welcome .swipe-instruction{
+  inset:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  padding:0 clamp(48px,15vw,190px)!important;
+  font-size:clamp(11px,1.9vw,18px)!important;
+  line-height:1.45!important;
+  text-align:center!important;
+}
+#welcome .hint{
+  flex:0 0 auto!important;
+  width:100%!important;
+  margin:0 auto!important;
+  padding:0 12px!important;
+  font-size:clamp(12px,1.8vw,15px)!important;
+  line-height:1.5!important;
+  text-align:center!important;
+}
+@media(max-width:720px){
+  #welcome.welcome.active{padding:78px 0 9px!important}
+  #welcome .welcome-inner{gap:clamp(2px,.75vh,7px)!important}
+  #welcome .logo-stage{
+    width:min(285px,62vw)!important;
+    height:clamp(100px,17vh,145px)!important;
+  }
+  #welcome .eyebrow{font-size:9px!important;letter-spacing:2px!important}
+  #welcome h1{font-size:clamp(22px,6vw,31px)!important;padding:8px 16px!important}
+  #welcome .welcome-copy{font-size:13px!important;line-height:1.45!important}
+  #welcome .swipe-control{
+    flex-basis:clamp(76px,12vh,100px)!important;
+    height:clamp(76px,12vh,100px)!important;
+  }
+  #welcome .swipe-instruction{
+    padding-inline:clamp(42px,14vw,90px)!important;
+    font-size:clamp(10px,3vw,13px)!important;
+  }
+  #welcome .hint{font-size:12px!important}
+}
+@media(max-height:650px){
+  #welcome.welcome.active{padding-top:76px!important;padding-bottom:5px!important}
+  #welcome .welcome-inner{gap:2px!important}
+  #welcome .logo-stage{height:clamp(78px,15vh,110px)!important;width:min(230px,52vw)!important}
+  #welcome .swipe-control{flex-basis:72px!important;height:72px!important}
+  #welcome .hint{font-size:11px!important}
+}
