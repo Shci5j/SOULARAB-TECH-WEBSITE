@@ -382,3 +382,60 @@ body{
 @media(max-width:720px){
  .screen-heading h2,.welcome h1{padding:13px 22px}
 }
+
+
+/* Owner's second approved welcome-screen wording and bottom swipe-arrow layout. */
+.welcome{
+  min-height:100svh!important;
+  padding:88px 0 26px!important;
+  justify-content:flex-start!important;
+}
+.welcome-inner{
+  min-height:calc(100svh - 114px)!important;
+  width:100%!important;
+  max-width:none!important;
+  justify-content:flex-start!important;
+}
+.welcome .logo-stage{flex-shrink:0}
+.welcome h1{margin-top:2px!important}
+.welcome-copy{
+  max-width:760px!important;
+  margin:12px auto 0!important;
+  padding:0 18px!important;
+  color:#f0dfbd!important;
+  font-size:clamp(14px,2.4vw,20px)!important;
+  font-weight:700!important;
+  line-height:1.8!important;
+}
+.welcome .swipe-control{
+  margin-top:auto!important;
+  margin-bottom:0!important;
+  flex-shrink:0!important;
+}
+.welcome .swipe-instruction{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  padding-inline:18%!important;
+  font-size:clamp(12px,2.15vw,20px)!important;
+  line-height:1.55!important;
+}
+.welcome .hint{
+  margin:8px 12px 0!important;
+  padding:0 10px!important;
+  color:#e5c98f!important;
+  font-size:clamp(12px,1.8vw,15px)!important;
+  font-weight:700!important;
+  line-height:1.7!important;
+  text-align:center!important;
+}
+@media(max-width:720px){
+  .welcome{padding-top:82px!important;padding-bottom:20px!important}
+  .welcome-inner{min-height:calc(100svh - 102px)!important}
+  .welcome .logo-stage{width:min(340px,76vw)!important;height:min(190px,40vw)!important;min-height:140px!important;margin-bottom:10px!important}
+  .welcome .eyebrow{margin:5px 0 8px!important}
+  .welcome h1{font-size:clamp(23px,6vw,34px)!important;padding:12px 20px!important}
+  .welcome-copy{margin-top:7px!important;font-size:14px!important}
+  .welcome .swipe-control{height:94px!important}
+  .welcome .swipe-instruction{font-size:12px!important;padding-inline:19%!important}
+  .welcome .hint{font-size:12px!important;margin-top:5px!important}
+}
