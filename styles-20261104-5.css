@@ -367,3 +367,18 @@ body{
  .services-title-frame h2{font-size:19px}
  .inner-head h2{padding:13px 24px;font-size:22px}
 }
+
+/* Extend the supplied rectangular title frame to the main menu and welcome headings. */
+.screen-heading h2,.welcome h1{
+ display:block;
+ width:min(760px,100%);
+ margin-inline:auto;
+ padding:16px 32px;
+ background:transparent url("https://raw.githubusercontent.com/Shci5j/-/main/%D8%A7%D8%B7%D8%A7%D8%B1%20%D9%85%D8%B3%D8%AA%D8%B7%D9%8A%D9%84.png") center/100% 100% no-repeat!important;
+ color:#f2dfad!important;
+ -webkit-text-fill-color:#f2dfad!important;
+ text-shadow:0 0 12px rgba(209,170,98,.25)!important;
+}
+@media(max-width:720px){
+ .screen-heading h2,.welcome h1{padding:13px 22px}
+}
