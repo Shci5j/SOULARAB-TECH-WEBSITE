@@ -8,7 +8,7 @@ function clickSound(){}
 $('#langBtn').addEventListener('click',()=>{setLanguage(language==='ar'?'en':'ar');clickSound()});
 $$('[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen)}));
 $$('.back-btn').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));
-$('.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen||'menu')}));
+$$('.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen||'menu')}));
 function enter(){clickSound();showScreen('menu')}
 const swipeTrack=$('#swipeTrack');let dragging=false,completed=false,activePointer=null;
 function updateSwipe(e){
