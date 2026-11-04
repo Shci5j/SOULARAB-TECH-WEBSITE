@@ -293,3 +293,40 @@ body{
 }
 .swipe-control[style*="--swipe-x"] .swipe-glow{opacity:1!important}
 @media(max-width:720px){.swipe-control{height:94px!important}.swipe-arrow path{stroke-width:3!important}}
+
+
+/* Services page — single vertical gold-framed catalogue with crown corner details. */
+.menu-home{margin-top:22px}
+.services-screen .inner-head{margin-bottom:18px}
+.services-title-frame{
+ position:relative;width:min(760px,100%);margin:0 auto 30px;
+ padding:22px 34px;border:2px solid #c59e4f;
+ outline:1px solid rgba(242,223,173,.55);outline-offset:-7px;
+ background:linear-gradient(145deg,rgba(22,17,9,.96),rgba(4,4,4,.98));
+ box-shadow:inset 0 0 24px rgba(197,158,79,.09),0 8px 28px rgba(0,0,0,.55);
+ text-align:center;
+}
+.services-title-frame h2{margin:0;color:#f2dfad;font-size:clamp(20px,3vw,30px);font-weight:800;letter-spacing:.2px}
+.crown-corner{
+ position:absolute;top:-17px;left:15px;z-index:2;
+ display:grid;place-items:center;min-width:35px;height:30px;padding:0 5px;
+ color:#f2d18a;font-size:25px;line-height:1;
+ background:#080706;text-shadow:0 0 7px rgba(232,190,104,.55);
+}
+.service-list{width:min(760px,100%);margin:0 auto;display:grid;grid-template-columns:1fr;gap:17px}
+.service-item{
+ position:relative;min-height:68px;display:flex;align-items:center;justify-content:center;
+ padding:17px 42px;border:2px solid #b88d4b;
+ outline:1px solid rgba(242,223,173,.42);outline-offset:-6px;
+ background:linear-gradient(145deg,rgba(22,17,9,.96),rgba(4,4,4,.98));
+ box-shadow:inset 0 0 18px rgba(197,158,79,.075),0 6px 18px rgba(0,0,0,.42);
+ color:#f2dfad;text-align:center;font-size:clamp(14px,2vw,18px);font-weight:700;
+}
+.service-item .crown-corner{top:-13px;left:12px;min-width:28px;height:23px;font-size:19px}
+@media(max-width:720px){
+ .services-title-frame{padding:19px 24px;margin-bottom:26px}
+ .services-title-frame h2{font-size:21px}
+ .service-list{gap:16px}
+ .service-item{min-height:62px;padding:15px 34px;font-size:14px}
+ .service-item .crown-corner{left:9px}
+}
