@@ -351,3 +351,60 @@ footer {
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(214,173,98,.18));
 } 
+/* Fix horizontal logo and hero layout */
+
+.hero-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: min(850px, 94%);
+  margin: auto;
+  padding: 45px 25px;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.logo-container img {
+  display: block;
+  width: min(480px, 90%);
+  max-height: 180px;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+}
+
+.hero h1,
+.hero h2,
+.hero p,
+.hero .discover {
+  position: relative;
+  display: block;
+  float: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .discover {
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .hero-frame {
+    width: 92%;
+    padding: 30px 16px;
+  }
+
+  .logo-container img {
+    width: 95%;
+    max-height: 130px;
+  }
+}
