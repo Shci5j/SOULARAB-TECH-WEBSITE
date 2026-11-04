@@ -1,338 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700&display=swap');
+(() => {
+  const languageButton = document.getElementById('languageBtn');
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  const contactForm = document.getElementById('contactForm');
+  const whatsappNumber = '971525987033';
 
-:root {
-  --gold: #d6ad62;
-  --light-gold: #f5dfa9;
-  --dark: #080808;
-  --panel: #11100e;
-  --text: #eee7da;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--dark);
-  color: var(--text);
-  font-family: 'Cairo', sans-serif;
-  line-height: 1.8;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.topbar,
-header {
-  min-height: 75px;
-  padding: 15px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(214,173,98,.25);
-  background: #090909;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.brand {
-  font-family: 'Cinzel', serif;
-  font-size: 19px;
-  letter-spacing: 2px;
-  color: #fff;
-}
-
-.brand span {
-  color: var(--gold);
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-#languageBtn {
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--light-gold);
-  padding: 7px 18px;
-  border-radius: 3px;
-}
-
-.hero {
-  min-height: 90vh;
-  padding: 55px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center, #211a10 0%, #0b0a08 48%, #080808 78%);
-}
-
-.hero-frame {
-  width: min(850px, 100%);
-  padding: 45px 25px;
-  border: 1px solid rgba(214,173,98,.65);
-  outline: 1px solid rgba(214,173,98,.12);
-  outline-offset: 9px;
-  position: relative;
-}
-
-.crown {
-  color: var(--gold);
-  font-size: 35px;
-}
-
-.monogram {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(75px, 15vw, 130px);
-  line-height: 1.3;
-  color: var(--light-gold);
-  text-shadow: 0 0 25px rgba(214,173,98,.25);
-}
-
-.gold-line {
-  height: 1px;
-  width: 140px;
-  background: var(--gold);
-  margin: 12px auto 22px;
-}
-
-.hero h1 {
-  font-family: 'Cinzel', serif;
-  color: var(--light-gold);
-  font-size: clamp(25px, 5vw, 42px);
-  letter-spacing: 3px;
-  animation: shine 5s linear infinite;
-  background: linear-gradient(90deg,#9e7738,#fff0bd,#c3984d,#fff0bd,#9e7738);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@keyframes shine {
-  to { background-position: 250% center; }
-}
-
-.tagline {
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin: 5px 0 30px;
-}
-
-.hero h2 {
-  font-size: 25px;
-  color: var(--light-gold);
-  margin-bottom: 15px;
-}
-
-.hero-frame > p:not(.tagline) {
-  max-width: 650px;
-  margin: 0 auto 25px;
-  color: #c8c0b3;
-}
-
-.discover {
-  display: inline-block;
-  margin-top: 12px;
-  border: 1px solid var(--gold);
-  color: var(--light-gold);
-  padding: 10px 30px;
-  transition: .3s;
-}
-
-.discover:hover,
-.menu-grid a:hover {
-  background: var(--gold);
-  color: #080808;
-}
-
-.section,
-.menu-section,
-.content-section {
-  padding: 85px 7%;
-  text-align: center;
-  border-top: 1px solid rgba(214,173,98,.15);
-}
-
-.section h2,
-.menu-section h2,
-.content-section h2 {
-  color: var(--light-gold);
-  font-size: 30px;
-  margin-bottom: 30px;
-}
-
-.eyebrow {
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-.menu-grid,
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
-  gap: 18px;
-  max-width: 1100px;
-  margin: 35px auto 0;
-}
-
-.menu-grid a,
-.service-grid > div {
-  border: 1px solid rgba(214,173,98,.4);
-  padding: 22px 12px;
-  background: linear-gradient(145deg,#17140f,#0b0b0b);
-  color: var(--light-gold);
-  transition: .3s;
-}
-
-.menu-grid a:hover,
-.service-grid > div:hover {
-  transform: translateY(-5px);
-  border-color: var(--light-gold);
-  box-shadow: 0 8px 25px rgba(214,173,98,.1);
-}
-
-.service-grid small {
-  display: block;
-  color: #a99a7c;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  margin-top: 8px;
-}
-
-.content-section {
-  background: #0c0b09;
-}
-
-.content-section:nth-of-type(even) {
-  background: #100e0b;
-}
-
-form {
-  max-width: 650px;
-  margin: auto;
-  display: grid;
-  gap: 15px;
-}
-
-input,
-textarea,
-select {
-  width: 100%;
-  background: #15130f;
-  color: white;
-  border: 1px solid rgba(214,173,98,.4);
-  padding: 14px;
-  font-family: inherit;
-  outline: none;
-  border-radius: 3px;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--gold);
-}
-
-textarea {
-  min-height: 130px;
-  resize: vertical;
-}
-
-form button {
-  padding: 14px;
-  background: linear-gradient(90deg,#a77a35,#f0d49a,#a77a35);
-  color: #100d08;
-  border: none;
-  font-weight: 800;
-}
-
-#contact a,
-#how a {
-  color: var(--light-gold);
-  text-decoration: underline;
-}
-
-footer {
-  padding: 25px 10px;
-  text-align: center;
-  border-top: 1px solid rgba(214,173,98,.3);
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.chat-button {
-  position: fixed;
-  bottom: 22px;
-  right: 20px;
-  z-index: 20;
-  background: var(--gold);
-  color: #080808;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 30px;
-  font-weight: bold;
-}
-
-.chat-box {
-  position: fixed;
-  bottom: 85px;
-  right: 20px;
-  z-index: 20;
-  width: min(300px,calc(100% - 40px));
-  padding: 20px;
-  background: #17140f;
-  border: 1px solid var(--gold);
-  border-radius: 8px;
-  box-shadow: 0 5px 30px #000;
-}
-
-.chat-box a,
-.chat-box button {
-  display: block;
-  margin-top: 15px;
-  color: var(--light-gold);
-}
-
-.chat-box button {
-  background: transparent;
-  border: 1px solid var(--gold);
-  padding: 6px 15px;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-@media(max-width:600px) {
-  .hero-frame {
-    padding: 35px 15px;
+  function setLanguage(language) {
+    const lang = language === 'en' ? 'en' : 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-ar][data-en]').forEach((element) => {
+      const value = element.dataset[lang];
+      if (value !== undefined) element.textContent = value;
+    });
+    document.querySelectorAll('[data-placeholder-ar][data-placeholder-en]').forEach((element) => {
+      element.placeholder = element.dataset[lang === 'ar' ? 'placeholderAr' : 'placeholderEn'];
+    });
+    if (languageButton) languageButton.textContent = lang === 'ar' ? 'English' : 'العربية';
+    if (menuToggle) menuToggle.setAttribute('aria-label', lang === 'ar' ? 'فتح القائمة' : 'Open menu');
+    try { localStorage.setItem('soularab-language', lang); } catch (_) {}
   }
 
-  .section,
-  .menu-section,
-  .content-section {
-    padding: 60px 5%;
-  }
+  let savedLanguage = 'ar';
+  try { savedLanguage = localStorage.getItem('soularab-language') || 'ar'; } catch (_) {}
+  setLanguage(savedLanguage);
 
-  .section h2,
-  .menu-section h2,
-  .content-section h2 {
-    font-size: 24px;
-  }
-}
+  languageButton?.addEventListener('click', () => {
+    setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar');
+  });
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '×' : '☰';
+  });
+
+  mainNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      if (menuToggle) menuToggle.textContent = '☰';
+    });
+  });
+
+  contactForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!contactForm.reportValidity()) return;
+    const lang = document.documentElement.lang;
+    const name = document.getElementById('clientName').value.trim();
+    const email = document.getElementById('clientEmail').value.trim();
+    const service = document.getElementById('serviceType').selectedOptions[0].textContent.trim();
+    const details = document.getElementById('projectDetails').value.trim();
+    const message = lang === 'ar'
+      ? 'طلب جديد من موقع SOULARAB TECH%0Aالاسم: ' + name + '%0Aالبريد الإلكتروني: ' + email + '%0Aالخدمة: ' + service + '%0Aتفاصيل المشروع: ' + details
+      : 'New inquiry from SOULARAB TECH website%0AName: ' + name + '%0AEmail: ' + email + '%0AService: ' + service + '%0AProject details: ' + details;
+    const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message.replaceAll('%0A', '\n'));
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
