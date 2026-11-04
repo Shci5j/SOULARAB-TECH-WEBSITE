@@ -260,3 +260,36 @@ body{
 }
 @keyframes swipeArrowShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 @media(max-width:720px){.swipe-control{height:76px!important}.swipe-arrow{font-size:clamp(68px,18vw,100px)!important}}
+
+
+/* Final swipe design: full-width hollow arrow; only the finger-controlled light moves. */
+.welcome-inner{width:100%!important;max-width:none!important}
+.swipe-control{
+ width:100vw!important;max-width:none!important;height:112px!important;
+ margin-inline:calc(50% - 50vw)!important;padding:0!important;
+ position:relative!important;display:block!important;overflow:hidden!important;
+ border:0!important;outline:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+ touch-action:pan-y!important;user-select:none!important;-webkit-user-select:none!important;
+ cursor:ew-resize!important;
+}
+.swipe-control:before,.swipe-control:after{content:none!important;display:none!important}
+.swipe-rail,.swipe-progress{display:none!important}
+.swipe-arrow{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ display:block!important;transform:none!important;overflow:visible!important;
+ color:rgba(231,190,105,.72)!important;filter:drop-shadow(0 0 2px rgba(246,220,165,.25))!important;
+ pointer-events:none!important;
+}
+.swipe-arrow path{fill:none!important;stroke:currentColor!important;stroke-width:2.2!important}
+.swipe-glow{
+ position:absolute!important;top:0!important;bottom:0!important;
+ left:var(--swipe-x,0%)!important;right:auto!important;
+ width:clamp(42px,6vw,76px)!important;
+ opacity:0!important;transform:translateX(-50%)!important;
+ background:radial-gradient(ellipse at center,rgba(255,250,225,1) 0%,rgba(255,225,155,.82) 18%,rgba(245,195,105,.32) 43%,transparent 76%)!important;
+ filter:blur(5px) drop-shadow(0 0 14px rgba(255,220,150,.98))!important;
+ animation:none!important;pointer-events:none!important;
+}
+.swipe-control[style*="--swipe-x"] .swipe-glow{opacity:1!important}
+@media(max-width:720px){.swipe-control{height:94px!important}.swipe-arrow path{stroke-width:3!important}}
