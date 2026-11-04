@@ -1,63 +1,32 @@
 (() => {
-  const languageButton = document.getElementById('languageBtn');
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-  const contactForm = document.getElementById('contactForm');
-  const whatsappNumber = '971525987033';
-
-  function setLanguage(language) {
-    const lang = language === 'en' ? 'en' : 'ar';
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-ar][data-en]').forEach((element) => {
-      const value = element.dataset[lang];
-      if (value !== undefined) element.textContent = value;
-    });
-    document.querySelectorAll('[data-placeholder-ar][data-placeholder-en]').forEach((element) => {
-      element.placeholder = element.dataset[lang === 'ar' ? 'placeholderAr' : 'placeholderEn'];
-    });
-    if (languageButton) languageButton.textContent = lang === 'ar' ? 'English' : 'العربية';
-    if (menuToggle) menuToggle.setAttribute('aria-label', lang === 'ar' ? 'فتح القائمة' : 'Open menu');
-    try { localStorage.setItem('soularab-language', lang); } catch (_) {}
-  }
-
-  let savedLanguage = 'ar';
-  try { savedLanguage = localStorage.getItem('soularab-language') || 'ar'; } catch (_) {}
-  setLanguage(savedLanguage);
-
-  languageButton?.addEventListener('click', () => {
-    setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar');
-  });
-
-  menuToggle?.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-    menuToggle.textContent = isOpen ? '×' : '☰';
-  });
-
-  mainNav?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-      if (menuToggle) menuToggle.textContent = '☰';
-    });
-  });
-
-  contactForm?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!contactForm.reportValidity()) return;
-    const lang = document.documentElement.lang;
-    const name = document.getElementById('clientName').value.trim();
-    const email = document.getElementById('clientEmail').value.trim();
-    const service = document.getElementById('serviceType').selectedOptions[0].textContent.trim();
-    const details = document.getElementById('projectDetails').value.trim();
-    const message = lang === 'ar'
-      ? 'طلب جديد من موقع SOULARAB TECH%0Aالاسم: ' + name + '%0Aالبريد الإلكتروني: ' + email + '%0Aالخدمة: ' + service + '%0Aتفاصيل المشروع: ' + details
-      : 'New inquiry from SOULARAB TECH website%0AName: ' + name + '%0AEmail: ' + email + '%0AService: ' + service + '%0AProject details: ' + details;
-    const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message.replaceAll('%0A', '\n'));
-    window.open(url, '_blank', 'noopener,noreferrer');
-  });
-
-  const year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const screens=$$('.screen');let language='ar',current='welcome';
+function setLanguage(lang){language=lang==='en'?'en':'ar';document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';$$('[data-ar][data-en]').forEach(el=>{const value=el.dataset[language];if(value!==undefined)el.textContent=value});$('#langBtn').textContent=language==='ar'?'English':'العربية';$('#chatInput').placeholder=language==='ar'?'اكتب سؤالك...':'Ask your question...';try{localStorage.setItem('soularab-language',language)}catch(e){}}
+try{setLanguage(localStorage.getItem('soularab-language')||'ar')}catch(e){setLanguage('ar')}
+function showScreen(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));current=id;window.scrollTo({top:0,behavior:'smooth'});if(id==='menu')$('#roohLaunch').hidden=false}
+function clickSound(){if(!$('#soundBtn').classList.contains('muted')){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(680,c.currentTime);o.frequency.exponentialRampToValueAtTime(430,c.currentTime+.07);g.gain.setValueAtTime(.045,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.11);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.12);o.onended=()=>c.close()}catch(e){}}}
+$('#langBtn').addEventListener('click',()=>{setLanguage(language==='ar'?'en':'ar');clickSound()});
+$('#soundBtn').addEventListener('click',e=>{e.currentTarget.classList.toggle('muted');e.currentTarget.querySelector('span').textContent=e.currentTarget.classList.contains('muted')?(language==='ar'?'صامت':'Muted'):(language==='ar'?'الصوت':'Sound')});
+$$('[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen)}));
+$$('.back-btn,.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));
+function enter(){clickSound();showScreen('menu')}
+$('#enterBtn').addEventListener('click',enter);
+let startX=null;$('#welcome').addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});$('#welcome').addEventListener('touchend',e=>{if(startX!==null&&startX-e.changedTouches[0].clientX>55)enter();startX=null},{passive:true});
+$$('.gallery-item').forEach(item=>item.addEventListener('click',()=>{$('#imageViewer').hidden=false;$('#imageViewer img').src=item.dataset.preview}));
+$('#closeViewer').addEventListener('click',()=>$('#imageViewer').hidden=true);$('#imageViewer').addEventListener('click',e=>{if(e.target.id==='imageViewer')e.currentTarget.hidden=true});
+$('#musicToggle').addEventListener('click',()=>$('#musicTab').classList.toggle('open'));
+const rooh=$('#roohChat');$('#roohLaunch').addEventListener('click',()=>{rooh.hidden=!rooh.hidden;clickSound()});$('#closeChat').addEventListener('click',()=>rooh.hidden=true);
+const answers={
+services:{ar:'نقدم تصميم الشعارات والهويات التجارية والتصميم الجرافيكي ودعوات الزفاف، إضافة إلى المواقع الإلكترونية والحلول الرقمية وواجهات المستخدم وتطبيقات الهاتف. يمكنك فتح شاشة «خدماتنا» للتفاصيل.',en:'We offer logo and brand identity design, graphic design, wedding invitations, websites, digital solutions, user interfaces and mobile apps. Open the Services screen for details.'},
+contact:{ar:'يمكنك مراسلتنا عبر واتساب على الرقم +971 52 598 7033 أو البريد Abdulkaderbinshy@gmail.com. يسعدنا التواصل معك.',en:'Reach us on WhatsApp at +971 52 598 7033 or email Abdulkaderbinshy@gmail.com. We look forward to hearing from you.'},
+location:{ar:'مقر SOULARAB TECH في حلب، سوريا، ونخدم عملاءنا حول العالم عن بُعد.',en:'SOULARAB TECH is based in Aleppo, Syria, and serves clients worldwide remotely.'},
+process:{ar:'نبدأ بفهم احتياجك، ثم نتفق على التفاصيل والمدة والتكلفة، وبعدها ننفذ العمل ونسلم الملفات بالصيغ المتفق عليها.',en:'We understand your needs, agree on scope, timeline and price, then create and deliver the agreed files.'}
+};
+function addMessage(text,cls){const p=document.createElement('p');p.className=cls;p.textContent=text;$('#chatBody').append(p);$('#chatBody').scrollTop=$('#chatBody').scrollHeight}
+function answerQuestion(q){const text=answers[q]?.[language]||(language==='ar'?'يسعدني مساعدتك! يمكنني توضيح خدماتنا أو طرق التواصل أو موقع الشركة. ولأي سؤال تفصيلي غير متوفر لدي، تواصل معنا مباشرة عبر واتساب.':'Happy to help! I can explain our services, contact details or location. For anything more specific, please contact us directly on WhatsApp.');addMessage(text,'bot-message')}
+$$('[data-question]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent,'user-message');answerQuestion(b.dataset.question)}));
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();const input=$('#chatInput'),q=input.value.trim();if(!q)return;addMessage(q,'user-message');input.value='';const normalized=q.toLowerCase();let key=normalized.match(/خدم|service|تصميم|design/)?'services':normalized.match(/تواصل|واتساب|بريد|contact|email|whatsapp/)?'contact':normalized.match(/أين|وين|مقر|location|based/)?'location':normalized.match(/كيف.*عمل|طريقة|process/)?'process':null;answerQuestion(key)});
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#orderName').value.trim(),service=$('#orderService').selectedOptions[0].textContent.trim(),details=$('#orderDetails').value.trim();const msg=language==='ar'?'طلب خدمة جديد من SOULARAB TECH\nالاسم: '+name+'\nالخدمة: '+service+'\nتفاصيل المشروع: '+details:'New service request from SOULARAB TECH\nName: '+name+'\nService: '+service+'\nProject details: '+details;window.open('https://wa.me/971525987033?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
+$('#year').textContent=new Date().getFullYear();
+setInterval(()=>{const b=$('#roohLaunch');if(!b.hidden&&rooh.hidden){b.classList.remove('wave');void b.offsetWidth;b.classList.add('wave')}},600000);
 })();
