@@ -4,9 +4,8 @@ const screens=$$('.screen');let language='ar',current='welcome';
 function setLanguage(lang){language=lang==='en'?'en':'ar';document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';$$('[data-ar][data-en]').forEach(el=>{const value=el.dataset[language];if(value!==undefined)el.textContent=value});$('#langBtn').textContent=language==='ar'?'English':'العربية';$('#chatInput').placeholder=language==='ar'?'اكتب سؤالك...':'Ask your question...';try{localStorage.setItem('soularab-language',language)}catch(e){}}
 try{setLanguage(localStorage.getItem('soularab-language')||'ar')}catch(e){setLanguage('ar')}
 function showScreen(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));current=id;window.scrollTo({top:0,behavior:'smooth'});if(id==='menu')$('#roohLaunch').hidden=false}
-function clickSound(){if(!$('#soundBtn').classList.contains('muted')){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(680,c.currentTime);o.frequency.exponentialRampToValueAtTime(430,c.currentTime+.07);g.gain.setValueAtTime(.045,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.11);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.12);o.onended=()=>c.close()}catch(e){}}}
+function clickSound(){}
 $('#langBtn').addEventListener('click',()=>{setLanguage(language==='ar'?'en':'ar');clickSound()});
-$('#soundBtn').addEventListener('click',e=>{e.currentTarget.classList.toggle('muted');e.currentTarget.querySelector('span').textContent=e.currentTarget.classList.contains('muted')?(language==='ar'?'صامت':'Muted'):(language==='ar'?'الصوت':'Sound')});
 $$('[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen)}));
 $$('.back-btn,.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));
 function enter(){clickSound();showScreen('menu')}
