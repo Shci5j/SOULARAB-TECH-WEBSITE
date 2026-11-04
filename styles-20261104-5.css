@@ -512,7 +512,7 @@ body:has(#welcome.active) main{height:100svh;min-height:0;overflow:hidden}
   width:100vw!important;
   max-width:none!important;
   height:clamp(78px,13vh,118px)!important;
-  margin:auto calc(50% - 50vw) 0!important;
+  margin:clamp(3px,1vh,10px) calc(50% - 50vw) 0!important;
   padding:0!important;
   overflow:hidden!important;
   border:0!important;
