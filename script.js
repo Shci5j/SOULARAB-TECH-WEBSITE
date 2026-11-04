@@ -7,7 +7,8 @@ function showScreen(id){screens.forEach(s=>s.classList.toggle('active',s.id===id
 function clickSound(){}
 $('#langBtn').addEventListener('click',()=>{setLanguage(language==='ar'?'en':'ar');clickSound()});
 $$('[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen)}));
-$('.back-btn').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));\n$('.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen||'menu')}));
+$('.back-btn').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen('menu')}));
+$('.back-text').forEach(btn=>btn.addEventListener('click',()=>{clickSound();showScreen(btn.dataset.screen||'menu')}));
 function enter(){clickSound();showScreen('menu')}
 const swipeTrack=$('#swipeTrack');let dragging=false,completed=false;
 function moveSwipe(e){if(!dragging||completed)return;const rect=swipeTrack.getBoundingClientRect();const x=Math.max(0,Math.min(rect.width,e.clientX-rect.left));const p=x/rect.width;swipeTrack.style.setProperty('--swipe-x',(p*100)+'%');swipeTrack.setAttribute('aria-valuenow',String(Math.round(p*100)));if(p>=.985){completed=true;dragging=false;try{swipeTrack.releasePointerCapture(e.pointerId)}catch(_){}enter()}}
@@ -30,7 +31,13 @@ function addMessage(text,cls){const p=document.createElement('p');p.className=cl
 function answerQuestion(q){const text=answers[q]?.[language]||(language==='ar'?'يسعدني مساعدتك! يمكنني توضيح خدماتنا أو طرق التواصل أو موقع الشركة. ولأي سؤال تفصيلي غير متوفر لدي، تواصل معنا مباشرة عبر واتساب.':'Happy to help! I can explain our services, contact details or location. For anything more specific, please contact us directly on WhatsApp.');addMessage(text,'bot-message')}
 $$('[data-question]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent,'user-message');answerQuestion(b.dataset.question)}));
 $('#chatForm').addEventListener('submit',e=>{e.preventDefault();const input=$('#chatInput'),q=input.value.trim();if(!q)return;addMessage(q,'user-message');input.value='';const normalized=q.toLowerCase();let key=normalized.match(/خدم|service|تصميم|design/)?'services':normalized.match(/تواصل|واتساب|بريد|contact|email|whatsapp/)?'contact':normalized.match(/أين|وين|مقر|location|based/)?'location':normalized.match(/كيف.*عمل|طريقة|process/)?'process':null;answerQuestion(key)});
-$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#orderName').value.trim(),service=$('#orderService').selectedOptions[0].textContent.trim(),details=$('#orderDetails').value.trim();const msg=language==='ar'?'طلب خدمة جديد من SOULARAB TECH\nالاسم: '+name+'\nالخدمة: '+service+'\nتفاصيل المشروع: '+details:'New service request from SOULARAB TECH\nName: '+name+'\nService: '+service+'\nProject details: '+details;window.open('https://wa.me/971525987033?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#orderName').value.trim(),service=$('#orderService').selectedOptions[0].textContent.trim(),details=$('#orderDetails').value.trim();const msg=language==='ar'?'طلب خدمة جديد من SOULARAB TECH
+الاسم: '+name+'
+الخدمة: '+service+'
+تفاصيل المشروع: '+details:'New service request from SOULARAB TECH
+Name: '+name+'
+Service: '+service+'
+Project details: '+details;window.open('https://wa.me/971525987033?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
 $('#year').textContent=new Date().getFullYear();
 setInterval(()=>{const b=$('#roohLaunch');if(!b.hidden&&rooh.hidden){b.classList.remove('wave');void b.offsetWidth;b.classList.add('wave')}},600000);
 })();
