@@ -15,3 +15,110 @@
 [dir="ltr"] .back-btn{right:auto;left:0}[dir="ltr"] .rooh-launch,[dir="ltr"] .rooh-chat{right:auto;left:20px}
 @media(max-width:720px){.topbar{height:65px;padding-inline:15px}.mini-brand{width:100px;height:48px}.screen{padding:92px 18px 82px}.logo-stage{height:205px}.swipe-control{height:78px;width:calc(100vw - 24px)}.swipe-arrow{width:70px;height:70px;font-size:36px}.swipe-rail{inset-inline:24px;height:7px}.v-menu{grid-template-columns:1fr 1fr;gap:10px}.menu-card,.card-work,.card-why,.card-services,.card-contact,.card-order{grid-column:auto;min-height:135px}.card-services{grid-column:1/-1;min-height:145px;order:-1}.menu-card strong{font-size:13px}.menu-card small{font-size:9px}.menu-icon{font-size:22px}.service-columns{grid-template-columns:1fr;gap:14px}.service-group{padding:20px}.service-group li{font-size:13px;padding:8px 5px}.feature-grid{gap:10px}.feature-grid article{padding:16px}.feature-grid h3{font-size:13px}.feature-grid p{font-size:11px}.gallery-grid{grid-template-columns:1fr}.gallery-item,.gallery-placeholder{min-height:220px}.contact-cards{grid-template-columns:1fr}.contact-cards>*{min-height:125px}.back-btn{width:38px;height:38px}.inner-head{padding:0 38px}.rooh-launch{width:53px;height:53px;right:12px;bottom:13px}.rooh-chat{right:12px;bottom:75px}.assistant-reminder{max-width:85%;line-height:1.8}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* SOULARAB TECH visual refinement — built from the written design checkpoint.
+   Original reference artwork was not present in the repository at implementation time. */
+:root{
+  --gold:#c59e4f;
+  --gold2:#f2dfad;
+  --ink:#050505;
+  --panel:rgba(8,7,6,.94);
+  --line:rgba(197,158,79,.68);
+}
+html{scroll-behavior:smooth}
+body{
+  background-color:#050505;
+  background-image:
+    radial-gradient(ellipse at 50% 35%,rgba(112,82,35,.13),transparent 58%),
+    radial-gradient(ellipse at 8% 12%,rgba(255,255,255,.035),transparent 34%),
+    radial-gradient(ellipse at 92% 88%,rgba(194,151,71,.055),transparent 38%),
+    repeating-linear-gradient(112deg,rgba(255,255,255,.012) 0 1px,transparent 1px 7px),
+    linear-gradient(180deg,#090909 0%,#030303 55%,#080705 100%);
+  background-attachment:fixed;
+}
+.ambient{
+  opacity:.4;
+  background:
+    radial-gradient(ellipse at 50% 0%,transparent 45%,rgba(197,158,79,.045) 100%),
+    repeating-linear-gradient(45deg,transparent 0 42px,rgba(210,176,112,.018) 43px 44px,transparent 45px 86px),
+    repeating-linear-gradient(-45deg,transparent 0 62px,rgba(255,255,255,.012) 63px 64px,transparent 65px 124px);
+}
+:where(.quiet-btn,.menu-card,.service-group,.feature-grid article,.gallery-item,.gallery-placeholder,.contact-cards>*,.order-form input,.order-form select,.order-form textarea,.quick-questions button,.rooh-chat,.swipe-control){
+  border-color:transparent;
+  border-image:none;
+  outline:1px solid rgba(197,158,79,.72);
+  outline-offset:-1px;
+  box-shadow:inset 0 0 0 4px rgba(197,158,79,.055),inset 0 0 24px rgba(197,158,79,.07),0 8px 28px rgba(0,0,0,.28);
+}
+:where(.quiet-btn,.menu-card,.service-group,.feature-grid article,.gallery-item,.gallery-placeholder,.contact-cards>*,.order-form input,.order-form select,.order-form textarea,.quick-questions button,.rooh-chat,.swipe-control)::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.menu-card,.service-group,.feature-grid article,.gallery-item,.gallery-placeholder,.contact-cards>*{position:relative;isolation:isolate}
+.menu-card:after,.service-group:after,.feature-grid article:after,.gallery-item:after,.gallery-placeholder:after,.contact-cards>*:after{
+  inset:7px;
+  border:1px solid rgba(230,198,133,.25);
+  background:
+    linear-gradient(135deg,rgba(235,204,143,.65) 0 1px,transparent 1px 12px) top left/15px 15px no-repeat,
+    linear-gradient(225deg,rgba(235,204,143,.65) 0 1px,transparent 1px 12px) top right/15px 15px no-repeat,
+    linear-gradient(45deg,rgba(235,204,143,.65) 0 1px,transparent 1px 12px) bottom left/15px 15px no-repeat,
+    linear-gradient(315deg,rgba(235,204,143,.65) 0 1px,transparent 1px 12px) bottom right/15px 15px no-repeat;
+  z-index:-1;
+}
+.quiet-btn{position:relative;background:linear-gradient(145deg,#17130c,#050505);border:1px solid #c59e4f;color:#f2dfad}
+.menu-card,.service-group,.feature-grid article,.gallery-item,.gallery-placeholder,.contact-cards>*{
+  background:linear-gradient(145deg,rgba(25,20,12,.96),rgba(5,5,5,.98) 72%);
+}
+.menu-card:hover{border-color:#f2dfad;box-shadow:0 14px 34px #000,inset 0 0 26px #c59e4f24}
+.inner-head h2,.screen-heading h2,.welcome h1{background:linear-gradient(100deg,#a97b34,#f6e6bd 48%,#b78a42);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.eyebrow,.menu-icon,.feature-grid b,.gallery-placeholder span,.contact-cards span{color:#d8b66f}
+.swipe-control{
+  border:1px solid #c59e4f;
+  border-radius:3px;
+  background:
+    linear-gradient(90deg,transparent 0 8px,rgba(197,158,79,.1) 8px 9px,transparent 9px calc(100% - 9px),rgba(197,158,79,.1) calc(100% - 9px) calc(100% - 8px),transparent calc(100% - 8px)),
+    linear-gradient(180deg,#17130d,#050505);
+  box-shadow:inset 0 0 0 5px rgba(197,158,79,.045),inset 0 0 30px rgba(197,158,79,.1),0 0 26px rgba(197,158,79,.13);
+  overflow:hidden;
+}
+.swipe-control:before{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(235,204,143,.35);
+  pointer-events:none;
+}
+.swipe-rail{height:2px;inset-inline:38px;background:linear-gradient(90deg,transparent,#a77d39 14%,#f1d99f 50%,#a77d39 86%,transparent);opacity:.9}
+.swipe-arrow{
+  width:clamp(112px,14vw,180px);
+  height:34px;
+  border:0;
+  border-radius:0;
+  background:linear-gradient(180deg,#f7e4b2,#bd9148 48%,#7f5925);
+  color:#171006;
+  font-size:34px;
+  line-height:1;
+  box-shadow:0 0 18px rgba(220,178,94,.5),0 0 38px rgba(220,178,94,.18);
+}
+.swipe-arrow:before{content:"";position:absolute;inset:3px;border-top:1px solid rgba(255,255,255,.6);border-bottom:1px solid rgba(45,28,8,.55)}
+.swipe-glow{background:linear-gradient(100deg,transparent 10%,rgba(247,221,168,.22) 50%,transparent 90%)}
+.back-btn,.back-text,.gold-button,.rooh-launch,.chat-head button,.image-viewer button,#chatForm button{
+  transition:filter .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+.back-btn{border-color:#c59e4f;background:linear-gradient(145deg,#18130b,#050505);box-shadow:inset 0 0 0 3px rgba(197,158,79,.07)}
+.back-text{border:1px solid rgba(197,158,79,.65);background:linear-gradient(145deg,#17130c,#050505);padding:10px 20px;outline:1px solid rgba(197,158,79,.2);outline-offset:-5px}
+.order-form input,.order-form select,.order-form textarea{background:rgba(7,7,7,.96);border:1px solid #a98548;outline:1px solid rgba(197,158,79,.18);outline-offset:-5px}
+.gold-button{background:linear-gradient(105deg,#8b642d,#e8ce91 48%,#a77b38);box-shadow:0 5px 20px rgba(197,158,79,.16)}
+.rooh-chat{border:1px solid #c59e4f;background:linear-gradient(145deg,#100d08,#050505)}
+.chat-head{background:linear-gradient(100deg,#21190d,#0b0906)}
+.site-footer{border-top:1px solid rgba(197,158,79,.48);background:linear-gradient(180deg,#090806,#030303)}
+.site-footer span{background:linear-gradient(90deg,#9b7133,#f1dca7,#9b7133);-webkit-background-clip:text;background-clip:text;color:transparent}
+:where(button,a,input,select,textarea):focus-visible{outline:2px solid #f0d69c;outline-offset:3px}
+@media(max-width:720px){
+  .swipe-control{height:72px;width:calc(100vw - 18px);border-radius:2px}
+  .swipe-arrow{width:104px;height:29px;font-size:29px}
+  .swipe-rail{inset-inline:28px}
+  .menu-card:after,.service-group:after,.feature-grid article:after,.gallery-item:after,.gallery-placeholder:after,.contact-cards>*:after{inset:5px}
+}
