@@ -11,8 +11,8 @@ This document preserves the approved visual references, implementation constrain
 
 > IMPORTANT: The original image files were not available to the working session when this document was created. The descriptions below preserve the approved specifications, but are NOT substitutes for the original assets. Do not recreate or approximate them and claim they are the originals. When the six source images are accessible, store them under `assets/design-references/` and update the filenames below.
 
-1. **Primary site background** — Original vertical charcoal/black stone-textured image with fine grain and symmetrical gold arabesque ornamentation along the sides and lower edges. Use as the persistent site background. Keep the central dark area readable. This exact image defines the site's black texture and gold metallic treatment.
-   - Intended file: `assets/design-references/01-primary-background.png`
+1. **Primary site background** — Owner-approved golden glitter background with falling gold stars. Use this artwork as the persistent site background, with a restrained dark overlay so text and interface panels remain readable. Source image: https://i.pinimg.com/originals/09/92/c9/0992c96412d58001c802b568ed3cc025.jpg (Pinterest reference: https://pt.pinterest.com/pin/777011742013039481/).
+   - Intended file: `assets/design-references/01-primary-background.png` (source artwork still needs to be committed locally if available).
 
 2. **Official logo** — Black-background image with gold ST monogram inside an ornate shield, gold crown above, and the exact wordmark `SOULARAB TECH` plus tagline `IDEAS INTO DIGITAL REALITY`. Preserve proportions, colors, and details; use the original asset rather than redrawing it.
    - Existing repository asset previously identified: `soularab-logo.png` (verify before replacing or duplicating).
@@ -63,7 +63,7 @@ This document preserves the approved visual references, implementation constrain
 8. Verify the live site URL independently; never claim deployment succeeded without a successful check.
 
 ## Asset status
-- [ ] Original primary background image received and committed
+- [ ] Owner-approved falling-gold-stars background source recorded; local image asset still needs to be committed
 - [ ] Original official logo reference image received/verified
 - [ ] Original current mobile homepage screenshot received and committed
 - [ ] Original ornate frame image received and committed
