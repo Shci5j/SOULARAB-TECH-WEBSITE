@@ -1,7 +1,7 @@
 (() => {
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const screens=$$('.screen');let language='ar',current='welcome';
-function setLanguage(lang){language=lang==='en'?'en':'ar';document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';$$('[data-ar][data-en]').forEach(el=>{const value=el.dataset[language];if(value!==undefined)el.textContent=value});$('#langBtn').textContent=language==='ar'?'English':'العربية';$('#chatInput').placeholder=language==='ar'?'اكتب سؤالك...':'Ask your question...';renderGallery();renderCustomSections();try{localStorage.setItem('soularab-language',language)}catch(e){}}
+function setLanguage(lang){language=lang==='en'?'en':'ar';document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';$$('[data-ar][data-en]').forEach(el=>{const value=el.dataset[language];if(value!==undefined)el.textContent=value});$('#langBtn').textContent=language==='ar'?'English':'العربية';$('#chatInput').placeholder=language==='ar'?'اكتب سؤالك...':'Ask your question...';try{localStorage.setItem('soularab-language',language)}catch(e){}}
 try{setLanguage(localStorage.getItem('soularab-language')||'ar')}catch(e){setLanguage('ar')}
 function showScreen(id,{history=true}={}){if(!screens.some(s=>s.id===id))return;screens.forEach(s=>s.classList.toggle('active',s.id===id));current=id;window.scrollTo({top:0,behavior:'smooth'});if(id==='menu')$('#roohLaunch').hidden=false;if(history){try{window.history.pushState({screen:id},'', '#'+id)}catch(_){}}}
 try{window.history.replaceState({screen:current},'', '#welcome')}catch(_){}
