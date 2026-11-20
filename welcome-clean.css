@@ -8,11 +8,11 @@
   font-family:"Tajawal",sans-serif;
 }
 #welcome .logo-stage{
-  position:absolute;top:8vh;left:50%;transform:translateX(-50%);
+  position:absolute;top:88px;left:50%;transform:translateX(-50%);
   width:min(410px,74vw);height:clamp(145px,24vh,230px);min-height:0;margin:0;
 }
 #welcome .welcome-tagline{
-  position:absolute;top:calc(8vh + clamp(145px,24vh,230px) + 3px);left:50%;
+  position:absolute;top:calc(88px + clamp(117px,19.44vh,186px) + 3px);left:50%;
   transform:translateX(-50%);width:100%;margin:0;padding:0 12px;
   color:#cbb58b;font-family:"Tajawal",sans-serif;font-size:clamp(13px,2vw,18px);
   font-weight:400;letter-spacing:.035em;line-height:1.5;text-shadow:0 0 10px #c9a45a20;
@@ -56,8 +56,8 @@
 #welcome .swipe-progress{width:var(--swipe-x,0%);background:linear-gradient(90deg,rgba(178,128,45,.06),rgba(249,219,147,.2));transition:width .06s linear}
 #welcome .swipe-control:focus-visible{outline:2px solid #d9b56b;outline-offset:4px}
 @media(max-width:720px){
-  #welcome .logo-stage{top:8vh;width:min(300px,70vw);height:clamp(125px,22vh,180px)}
-  #welcome .welcome-tagline{top:calc(8vh + clamp(125px,22vh,180px) + 2px);font-size:clamp(12px,3.5vw,16px)}
+  #welcome .logo-stage{top:82px;width:min(300px,70vw);height:clamp(125px,22vh,180px)}
+  #welcome .welcome-tagline{top:calc(82px + clamp(101px,17.82vh,146px) + 2px);font-size:clamp(12px,3.5vw,16px)}
   #welcome h1{font-size:clamp(32px,8vw,44px)}
   #welcome .welcome-copy{top:clamp(32px,5.2vh,44px);font-size:clamp(16px,4.2vw,20px)}
   #welcome .hint{top:70%;font-size:clamp(11px,3.3vw,14px);width:94%}
@@ -65,8 +65,8 @@
   #welcome .swipe-instruction{padding-inline:13%;font-size:clamp(10px,3.2vw,13px)}
 }
 @media(max-height:650px){
-  #welcome .logo-stage{top:6vh;height:clamp(90px,20vh,128px);width:min(260px,55vw)}
-  #welcome .welcome-tagline{top:calc(6vh + clamp(90px,20vh,128px) + 1px);font-size:clamp(11px,2.8vw,13px)}
+  #welcome .logo-stage{top:76px;height:clamp(90px,20vh,128px);width:min(260px,55vw)}
+  #welcome .welcome-tagline{top:calc(76px + clamp(73px,16.2vh,104px) + 1px);font-size:clamp(11px,2.8vw,13px)}
   #welcome h1{font-size:clamp(28px,6vh,38px)}
   #welcome .welcome-copy{top:clamp(28px,5vh,38px);font-size:clamp(14px,3.5vh,17px)}
   #welcome .hint{top:68%;font-size:clamp(10px,2.7vw,12px)}
