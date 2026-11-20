@@ -660,7 +660,7 @@ html[data-theme="light"] .site-footer{color:var(--muted)}
 @media(max-height:650px){
  #welcome .logo-stage{top:6vh;height:clamp(92px,20vh,130px);width:min(260px,55vw)}
  #welcome .welcome-tagline{top:calc(6vh + clamp(92px,20vh,130px) + 1px);font-size:12px}
- #welcome .welcome-center{top:47%}
+ #welcome .welcome-center{top:50%}
  #welcome h1{font-size:clamp(28px,6vh,38px)}
  #welcome .welcome-copy{font-size:14px;margin-top:3px}
  #welcome .hint{top:70%;font-size:11px}
